@@ -16,7 +16,9 @@ namespace Server
         public Guid guid;
         public clientData() {
             id = Guid.NewGuid().ToString();
+            // создаем поток (параметр - делегат)
             clientThread = new Thread(Server.Data_IN);
+            // параметр Start - это параметр делегата Data_IN
             clientThread.Start(clientSocket);
             sendRegistrationPacketToCLient();
         }
